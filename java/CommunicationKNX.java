@@ -1,3 +1,5 @@
+import tuwien.auto.calimero;
+
 public class CommunicationKNX {
     public static void main(String[] args) {
         String srcAdd;
@@ -16,6 +18,8 @@ public class CommunicationKNX {
         System.out.println("Temperature: " + pc.read(temperature));
 
         pc.write(new GroupAddress("0/0/1"), true); //écrire un booléen
+
+        netLinkIp.close(); //ferme la connexion au réseau KNX
 
         netLinkIp.addLinkListener(new NetworkLinkListener(){
             public void confirmation(FrameEvent arg0) {
