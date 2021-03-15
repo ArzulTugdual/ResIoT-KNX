@@ -1,13 +1,18 @@
 package resiot_knx;
 
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
 
+import tuwien.auto.calimero.CloseEvent;
+import tuwien.auto.calimero.FrameEvent;
 import tuwien.auto.calimero.GroupAddress;
 import tuwien.auto.calimero.knxnetip.KNXnetIPConnection;
 import tuwien.auto.calimero.link.KNXNetworkLinkIP;
+import tuwien.auto.calimero.link.NetworkLinkListener;
 import tuwien.auto.calimero.link.medium.TPSettings;
 import tuwien.auto.calimero.process.ProcessCommunicator;
 import tuwien.auto.calimero.process.ProcessCommunicatorImpl;
+import java.util.concurrent.TimeUnit;
 
 public class CommunicationKNX {
 	/**
@@ -36,7 +41,13 @@ public class CommunicationKNX {
 			System.out.println("Connection established to server " + knxLink.getName());
 			
 			ProcessCommunicator pc = new ProcessCommunicatorImpl(knxLink); //créé un ProcessCommunicator
-			
+			/*
+			long v = 1000;
+			Chenillard c = new Chenillard(pc, v);
+			c.demarrer();
+			TimeUnit.SECONDS.sleep(10);
+			c.eteindre();
+			*/
 			
 			//lire
 			boolean led1 = pc.readBool(new GroupAddress("0/1/1"));
@@ -50,7 +61,34 @@ public class CommunicationKNX {
 			System.out.println("valeur de la lampe 4: "+led4);
 			
 			//écrire
-			pc.write(new GroupAddress("0/0/2"), true);
+			//pc.write(new GroupAddress("0/0/2"), true);
+			boolean bouton1 = pc.readBool(new GroupAddress("1/0/1"));
+			
+			knxLink.addLinkListener(new NetworkLinkListener(){
+
+	            	            
+
+				@Override
+				public void indication(FrameEvent e) {
+		            System.out.println("srcadress " + arg0.getSource());
+		            System.out.println("targetadress " +
+		            ((CEMILData)arg0.getFrame()).getDestination());
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void linkClosed(CloseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void confirmation(FrameEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+	            });
 			
 			pc.close();
 			knxLink.close();
