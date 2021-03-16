@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import tuwien.auto.calimero.CloseEvent;
 import tuwien.auto.calimero.FrameEvent;
 import tuwien.auto.calimero.GroupAddress;
+import tuwien.auto.calimero.cemi.CEMILData;
 import tuwien.auto.calimero.knxnetip.KNXnetIPConnection;
 import tuwien.auto.calimero.link.KNXNetworkLinkIP;
 import tuwien.auto.calimero.link.NetworkLinkListener;
@@ -65,11 +66,9 @@ public class CommunicationKNX {
 			boolean bouton1 = pc.readBool(new GroupAddress("1/0/1"));
 			
 			knxLink.addLinkListener(new NetworkLinkListener(){
-
-	            	            
-
+				
 				@Override
-				public void indication(FrameEvent e) {
+				public void indication(FrameEvent arg0) {
 		            System.out.println("srcadress " + arg0.getSource());
 		            System.out.println("targetadress " +
 		            ((CEMILData)arg0.getFrame()).getDestination());
