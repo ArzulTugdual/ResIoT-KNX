@@ -1,13 +1,12 @@
 package resiot_knx;
 
-import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import tuwien.auto.calimero.GroupAddress;
 import tuwien.auto.calimero.KNXFormatException;
 import tuwien.auto.calimero.KNXTimeoutException;
 import tuwien.auto.calimero.link.KNXLinkClosedException;
 import tuwien.auto.calimero.process.ProcessCommunicator;
-import java.util.concurrent.TimeUnit;
 
 public class Chenillard {
 	
@@ -21,8 +20,14 @@ public class Chenillard {
 		
 		this.pc = processComm;
 		this.v = vitesse;
-		
-		this.t = new Thread() {
+	}
+	
+	/**
+	 * créé une instance de thread
+	 * @return nouvelle instance de thread
+	 */
+	public Thread thread() {
+		return new Thread() {
 			public void run() {
 				/*éteind tout */
 				for(int i=1;i<4;i++) {
@@ -41,7 +46,7 @@ public class Chenillard {
 				}
 				
 				int i=1;
-				while(running) {					
+				while(running) {
 					/*lance le chenillard*/
 					try {
 						pc.write(new GroupAddress("0/0/"+i), false); //éteind la lampe i
@@ -59,6 +64,7 @@ public class Chenillard {
 				}
 			}
 		};
+
 	}
 	
 	/**
@@ -67,6 +73,7 @@ public class Chenillard {
 	public void demarrer() {
 		/*lance le chenillard*/
 		this.running = true;
+		this.t = thread();
 		this.t.start();
 	}
 	
@@ -79,6 +86,7 @@ public class Chenillard {
 	
 	/**
 	 * accélère la vitesse du chenillard
+	 * @param pourcent: pourcentage d'accélération par rapport à la vitesse de départ
 	 */
 	private void accelere(int pourcent) {
 		
@@ -86,7 +94,7 @@ public class Chenillard {
 	
 	/**
 	 * ralenti de pourcent pourcent de la vitesse
-	 * @param pourcent
+	 * @param pourcent: pourcentage de ralentissement par rapport à la vitesse de départ
 	 */
 	private void ralenti(int pourcent) {
 		

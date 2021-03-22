@@ -1,7 +1,6 @@
 package resiot_knx;
 
 import tuwien.auto.calimero.DetachEvent;
-import tuwien.auto.calimero.KNXException;
 import tuwien.auto.calimero.process.ProcessCommunicator;
 import tuwien.auto.calimero.process.ProcessEvent;
 import tuwien.auto.calimero.process.ProcessListener;
