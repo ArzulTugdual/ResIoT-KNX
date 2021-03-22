@@ -32,7 +32,7 @@ public class CommunicationKNX {
 		// KNXNetworkLink is the base interface of a Calimero link to a KNX network. Here, we create an IP-based link,
 		// which supports NAT (Network Address Translation) if required.
 		// We also indicate that the KNX installation uses twisted-pair (TP1) medium.
-		try (var knxLink = KNXNetworkLinkIP.newTunnelingLink(local, server, false, new TPSettings())) {
+		try (KNXNetworkLinkIP knxLink = KNXNetworkLinkIP.newTunnelingLink(local, server, false, new TPSettings())) {
 
 			System.out.println("Connection established to server " + knxLink.getName());
 			

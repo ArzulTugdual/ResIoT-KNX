@@ -26,7 +26,7 @@ public class Chenillard {
 	 * créé une instance de thread
 	 * @return nouvelle instance de thread
 	 */
-	public Thread thread() {
+	private Thread thread() {
 		return new Thread() {
 			public void run() {
 				/*éteind tout */
