@@ -63,7 +63,7 @@ public class CommunicationKNX {
 			boolean bouton1 = pc.readBool(new GroupAddress("1/0/1"));
 			System.out.println("valeur du bouton 1: "+bouton1);
 			*/
-			ListenerKNX l = new ListenerKNX(pc, c);
+			new ListenerKNX(pc, c);
 			TimeUnit.SECONDS.sleep(30);
 			pc.close();
 			knxLink.close();
