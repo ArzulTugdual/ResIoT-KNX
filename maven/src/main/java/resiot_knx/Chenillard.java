@@ -88,7 +88,11 @@ public class Chenillard {
 	 * accélère la vitesse du chenillard
 	 * @param pourcent: pourcentage d'accélération par rapport à la vitesse de départ
 	 */
-	private void accelere(int pourcent) {
+	void accelere(int pourcent) {
+		this.v = pourcent;
+		this.running = true;
+		this.t = thread();
+		this.t.start();
 		
 	}
 	
@@ -96,7 +100,11 @@ public class Chenillard {
 	 * ralenti de pourcent pourcent de la vitesse
 	 * @param pourcent: pourcentage de ralentissement par rapport à la vitesse de départ
 	 */
-	private void ralenti(int pourcent) {
+	void ralenti(int pourcent) {
+		this.v = pourcent;
+		this.running = true;
+		this.t = thread();
+		this.t.start();
 		
 	}
 }
