@@ -64,7 +64,7 @@ public class CommunicationKNX {
 			System.out.println("valeur du bouton 1: "+bouton1);
 			*/
 			new ListenerKNX(pc, c);
-			TimeUnit.SECONDS.sleep(30);
+			TimeUnit.SECONDS.sleep(100);
 			pc.close();
 			knxLink.close();
 		}
