@@ -46,16 +46,16 @@ public class ListenerKNX {
 					if(running) {
 						accelererChenillard();
 					}
-					System.out.println("bouton 2 - accelerer" + value);
+					System.out.println("bouton 2 - accelerer");
 				}
 				else if(e.getDestination().toString().equals("1/0/3")) {
 					if(running) {
 						ralentirChenillard();
 					}
-					System.out.println("bouton 3 - ralentir "  + value);
+					System.out.println("bouton 3 - ralentir " );
 				}
 				else if(e.getDestination().toString().equals("1/0/4")) {
-					System.out.println("bouton 4"  + value);
+					System.out.println("bouton 4");
 				}
 			}
 			
