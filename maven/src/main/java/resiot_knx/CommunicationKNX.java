@@ -33,9 +33,9 @@ public class CommunicationKNX {
 				KNXnetIPConnection.DEFAULT_PORT);
 		
 		System.out.println("Establish a tunneling connection to the KNXnet/IP server " + server);
-		
-		try (KNXNetworkLinkIP knxLink = KNXNetworkLinkIP.newTunnelingLink(local, server, false, new TPSettings())) {
-
+		KNXNetworkLinkIP knxLink;
+		try {
+			knxLink = KNXNetworkLinkIP.newTunnelingLink(local, server, false, new TPSettings());
 			System.out.println("Connection established to server " + knxLink.getName());
 			
 			ProcessCommunicator pc = new ProcessCommunicatorImpl(knxLink); //créé un ProcessCommunicator
