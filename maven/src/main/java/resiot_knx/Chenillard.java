@@ -61,6 +61,7 @@ public class Chenillard {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
 				}
 			}
 		};
@@ -68,7 +69,7 @@ public class Chenillard {
 	}
 	
 	/**
-	 * démarre le chenillard
+	 * demarre le chenillard
 	 */
 	public void demarrer() {
 		/*lance le chenillard*/
@@ -78,34 +79,49 @@ public class Chenillard {
 	}
 	
 	/**
-	 * éteind le chenillard
+	 * eteind le chenillard
 	 */
 	public void eteindre() {
 		this.running = false;
+		try {
+			pc.write(new GroupAddress("0/0/1"), false);
+			pc.write(new GroupAddress("0/0/2"), false);
+			pc.write(new GroupAddress("0/0/3"), false);
+			pc.write(new GroupAddress("0/0/4"), false);
+		} catch (KNXTimeoutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (KNXLinkClosedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (KNXFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+		
+	
 	
 	/**
-	 * accélère la vitesse du chenillard
-	 * @param pourcent: pourcentage d'accélération par rapport à la vitesse de départ
+	 * accelere la vitesse du chenillard
+	 * @param pourcent: pourcentage d'acceleration par rapport a� la vitesse de depart
 	 */
-	void accelere(int pourcent) {
-		this.v = pourcent;
-		this.running = true;
-		this.t = thread();
-		this.t.start();
+	void accelere() {
+		if(v > 600) {	
+			this.v = v - 100;
+		}
+		else {
+			System.out.println("La vitesse est d�ja trop �lev�e.");
+		}
 		
 	}
 	
 	/**
 	 * ralenti de pourcent pourcent de la vitesse
-	 * @param pourcent: pourcentage de ralentissement par rapport à la vitesse de départ
+	 * @param pourcent: pourcentage de ralentissement par rapport a� la vitesse de depart
 	 */
-	void ralenti(int pourcent) {
-		this.v = pourcent;
-		this.running = true;
-		this.t = thread();
-		this.t.start();
-		
+	void ralenti() {
+		this.v = v +100;
 	}
 
 	public ProcessCommunicator getPc() {

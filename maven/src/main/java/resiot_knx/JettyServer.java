@@ -102,7 +102,7 @@ public class JettyServer {
             response.setContentType("text/html");
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().println("<h1>Arrêt du chenillard</h1>");
-            System.out.println("Arret cheniallard");
+            System.out.println("Arret chenillard");
             Chenillard c = JettyServer.comm.getC();
             c.eteindre();
         }
@@ -119,7 +119,7 @@ public class JettyServer {
             response.getWriter().println("<h1>Accélération defilement du chenillard</h1>");
             System.out.println("Acceleration chenillard");
             Chenillard c = JettyServer.comm.getC();
-            c.accelere(500);
+            c.accelere();
         }
     }
     
@@ -133,7 +133,7 @@ public class JettyServer {
             response.getWriter().println("<h1>Ralentissement du chenillard</h1>");
             System.out.println("Ralentissement chenillard");
             Chenillard c = JettyServer.comm.getC();
-            c.ralenti(2000);
+            c.ralenti();
         }
     }
     
