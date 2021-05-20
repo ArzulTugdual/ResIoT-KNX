@@ -4,13 +4,13 @@ export default {
   data () {
     return {
       info: null,
-      red: true
+      running: true
     }
   },
   methods: {
     startStop: function () {
       // éteindre
-      if (!this.red) {
+      if (!this.running) {
         axios
           .get('http://192.168.1.107:8080/stop')
           .then(response => (this.info = response))
@@ -19,7 +19,7 @@ export default {
           .get('http://192.168.1.107:8080/start')
           .then(response => (this.info = response))
       }
-      this.red = !this.red
+      this.running = !this.running
     },
     accelerer: function () {
       axios

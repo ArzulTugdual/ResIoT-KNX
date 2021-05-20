@@ -1,3 +1,10 @@
 .img {
-  max-width: 5%;
+  max-width: 10%;
+  height: auto;
+}
+
+.img:hover {
+  color: #ff7a59;
+  border: #000000 solid 1px;
+  background:#fff;
 }
