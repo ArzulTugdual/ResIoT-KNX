@@ -1,0 +1,1 @@
+{"name":"myapp","version":"0.1.0","dependencies":{"core-js":{"version":"3.9.1"},"entities":{"version":"2.2.0"},"vue":{"version":"2.6.12"},"vue-class-component":{"version":"7.2.6"},"vue-property-decorator":{"version":"9.1.2"},"vue-router":{"version":"3.5.1"}}}

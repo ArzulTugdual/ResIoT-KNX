@@ -107,4 +107,11 @@ public class Chenillard {
 		this.t.start();
 		
 	}
+
+	public ProcessCommunicator getPc() {
+		return pc;
+	}
+	
+	
+	
 }
