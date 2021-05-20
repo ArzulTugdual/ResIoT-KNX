@@ -43,8 +43,8 @@ public class CommunicationKNX {
 			this.v = 1000;
 			this.c = new Chenillard(pc, v);
 			new ListenerKNX(pc, c);
-			pc.close();
-			knxLink.close();
+			//pc.close();
+			//knxLink.close();
 		}
 		catch (Exception e) {
 			// KNXException: all Calimero-specific checked exceptions are subtypes of KNXException
@@ -57,6 +57,11 @@ public class CommunicationKNX {
 			System.out.println("Error creating KNXnet/IP tunneling link: " + e);
 		}
 
+	}
+
+	public Chenillard getC() {
+		// TODO Auto-generated method stub
+		return c;
 	}
 
 //	/**

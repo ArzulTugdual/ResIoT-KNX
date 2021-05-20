@@ -39,22 +39,24 @@ import tuwien.auto.calimero.process.ProcessCommunicator;
 public class JettyServer {
 	
 	
-	private static ProcessCommunicator pc;
-	//Chenillard chenille = new Chenillard(pc,v);
+	static CommunicationKNX comm;
+	static String destAdd;
 	
 	
     public static void main(String[] args) throws Exception {
         Server server = new Server(8080);
+        
+        destAdd = "192.168.1.201";
         ServletHandler handler = new ServletHandler();
         handler.addServletWithMapping(HelloServlet.class, "/hello");//Set the servlet to run, page default.
         handler.addServletWithMapping(StartServlet.class, "/start");
-        handler.addServletWithMapping(Start2Servlet.class, "/start2");
         handler.addServletWithMapping(StopServlet.class, "/stop");
         handler.addServletWithMapping(SpeedUpServlet.class, "/speedup");
         handler.addServletWithMapping(SpeedDownServlet.class, "/speeddown");
         handler.addServletWithMapping(StopServerServlet.class, "/stopserver");
         
-    
+        comm = new CommunicationKNX(destAdd);
+        
         server.setHandler(handler);    
         server.start();
         server.join();
@@ -70,20 +72,8 @@ public class JettyServer {
             response.setContentType("text/html");
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().println("<h1>Hello SimpleServlet</h1>");
+            
         }
-    }
-    
-    @SuppressWarnings("serial")
-    public static class Start2Servlet extends HttpServlet {
-
-        @Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            response.setContentType("text/html");
-            response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().println("<h1>Demarrage2 du chenillard</h1>");
-            //ListenerKNX listen = new ListenerKNX(c, new Chenillard(pc, 1000) );
-            //listen.lancerChenillard();
-    }
     }
     
     @SuppressWarnings("serial")
@@ -93,9 +83,15 @@ public class JettyServer {
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             response.setContentType("text/html");
             response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().println("<h1>Demarrage du chenillard</h1>");
-        }
+            response.getWriter().println("<h1>Demarrage2 du chenillard</h1>");
+            System.out.println("Demarrage chenillard");
+            Chenillard c = JettyServer.comm.getC();
+            c.demarrer();
+
     }
+    }
+    
+
     
     
     @SuppressWarnings("serial")
@@ -106,6 +102,9 @@ public class JettyServer {
             response.setContentType("text/html");
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().println("<h1>Arrêt du chenillard</h1>");
+            System.out.println("Arret cheniallard");
+            Chenillard c = JettyServer.comm.getC();
+            c.eteindre();
         }
     }
     
@@ -118,6 +117,9 @@ public class JettyServer {
             response.setContentType("text/html");
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().println("<h1>Accélération defilement du chenillard</h1>");
+            System.out.println("Acceleration chenillard");
+            Chenillard c = JettyServer.comm.getC();
+            c.accelere(500);
         }
     }
     
@@ -129,6 +131,9 @@ public class JettyServer {
             response.setContentType("text/html");
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().println("<h1>Ralentissement du chenillard</h1>");
+            System.out.println("Ralentissement chenillard");
+            Chenillard c = JettyServer.comm.getC();
+            c.ralenti(2000);
         }
     }
     
