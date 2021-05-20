@@ -29,7 +29,7 @@ public class Chenillard {
 	private Thread thread() {
 		return new Thread() {
 			public void run() {
-				/*éteind tout */
+				/*eteind tout */
 				for(int i=1;i<4;i++) {
 					try {
 						pc.write(new GroupAddress("0/0/"+i), false);
@@ -49,7 +49,7 @@ public class Chenillard {
 				while(running) {
 					/*lance le chenillard*/
 					try {
-						pc.write(new GroupAddress("0/0/"+i), false); //éteind la lampe i
+						pc.write(new GroupAddress("0/0/"+i), false); //eteind la lampe i
 						i++;
 						if(i>4) i=1;
 						pc.write(new GroupAddress("0/0/"+i), true); //allume la lampe i
