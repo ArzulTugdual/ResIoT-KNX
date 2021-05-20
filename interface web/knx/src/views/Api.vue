@@ -1,7 +1,17 @@
 <template>
   <div class="api" id="app">
-    <p>{{ info }}</p>
-    <button type="button" v-on:click="allumer()">Allumer le chenillard</button>
+    <div v-if="red">
+      <img  alt="rouge" src="../assets/Button_Icon_Red.png" v-on:click="startStop()" >
+      <p>allumer le chenillard</p>
+    </div>
+    <div v-else>
+      <img alt="vert" src="../assets/Button_Icon_Green.png" v-on:click="startStop()" >
+      <p>arrêter le chenillard</p>
+    </div>
+    <div>
+      <img class="img" alt="accélérer" src="../assets/lievre.png" v-on:click="accelerer()" >
+      <img class="img" alt="ralentir" src="../assets/tortue.png" v-on:click="ralentir()" >
+    </div>
   </div>
 </template>
 
