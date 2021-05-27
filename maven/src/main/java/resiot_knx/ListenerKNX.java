@@ -34,10 +34,12 @@ public class ListenerKNX {
 						if(!running) {
 							lancerChenillard();
 							running = true;
+							System.out.println("bouton 1 - démarrage chenillard");
 						}
 						else {
 							arreterChenillard();
 							running = false;
+							System.out.println("bouton 1 - Arrêt chenillard");
 						}
 					}
 					t0=t1;
@@ -55,7 +57,8 @@ public class ListenerKNX {
 					System.out.println("bouton 3 - ralentir " );
 				}
 				else if(e.getDestination().toString().equals("1/0/4")) {
-					System.out.println("bouton 4");
+					randomChenillard();
+					System.out.println("bouton 4 - random");
 				}
 			}
 			
@@ -91,5 +94,9 @@ public class ListenerKNX {
 	
 	void ralentirChenillard() {
 		this.c.ralenti();
+	}
+	
+	void randomChenillard() {
+		this.c.random();
 	}
 }

@@ -54,6 +54,8 @@ public class JettyServer {
         handler.addServletWithMapping(SpeedUpServlet.class, "/speedup");
         handler.addServletWithMapping(SpeedDownServlet.class, "/speeddown");
         handler.addServletWithMapping(StopServerServlet.class, "/stopserver");
+        handler.addServletWithMapping(RandomServlet.class, "/random");
+        handler.addServletWithMapping(PhareServlet.class, "/phare");
         
         comm = new CommunicationKNX(destAdd);
         
@@ -149,6 +151,34 @@ public class JettyServer {
             //server.stop();
         }
     }
+    
+    @SuppressWarnings("serial")
+    public static class RandomServlet extends HttpServlet {
+
+        @Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            response.setContentType("text/html");
+            response.setStatus(HttpServletResponse.SC_OK);
+            response.getWriter().println("<h1>Allumage aléatoire des lampes</h1>");
+            Chenillard c = JettyServer.comm.getC();
+            c.random();
+        }
+    }
+    
+    @SuppressWarnings("serial")
+    public static class PhareServlet extends HttpServlet {
+
+        @Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            response.setContentType("text/html");
+            response.setStatus(HttpServletResponse.SC_OK);
+            response.getWriter().println("<h1>Allumage des 4 lampes en même temps</h1>");
+            Chenillard c = JettyServer.comm.getC();
+            c.phare();
+            
+        }
+    }
+    
     
 }
 
