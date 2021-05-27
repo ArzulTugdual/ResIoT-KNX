@@ -1,11 +1,11 @@
-img {
-  max-width: 10%;
+.img {
+  width: 149px;
   height: auto;
 }
 
 .img:hover {
   border: #000000 solid 1px;
-  background:#fff;
+  background:rgb(255, 255, 255);
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -15,6 +15,7 @@ img {
   opacity: 0;
 }
 
-.vitesse {
-  display: ruby;
+table {
+  width: 80%;
+  margin: auto;
 }

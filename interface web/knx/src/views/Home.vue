@@ -9,7 +9,13 @@
   </div>
 </template>
 
-<style src="../assets/style.css"></style>
+<style>
+img {
+  max-width: 25%;
+  height: auto;
+}
+
+</style>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
 <script lang="ts">

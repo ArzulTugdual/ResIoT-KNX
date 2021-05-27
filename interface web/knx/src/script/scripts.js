@@ -3,14 +3,13 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      info: null,
-      running: false
+      info: null
     }
   },
   methods: {
-    startStop: function () {
+    startStop: function (running) {
       // éteindre
-      if (this.running) {
+      if (running) {
         axios
           .get('http://192.168.1.107:8080/stop')
           .then(response => (this.info = response))
@@ -19,7 +18,6 @@ export default {
           .get('http://192.168.1.107:8080/start')
           .then(response => (this.info = response))
       }
-      this.running = !this.running
     },
     accelerer: function () {
       axios
@@ -29,6 +27,16 @@ export default {
     ralentir: function () {
       axios
         .get('http://192.168.1.107:8080/speeddown')
+        .then(response => (this.info = response))
+    },
+    aleatoire: function () {
+      axios
+        .get('http://192.168.1.107:8080/random')
+        .then(response => (this.info = response))
+    },
+    phare: function () {
+      axios
+        .get('http://192.168.1.107:8080/phare')
         .then(response => (this.info = response))
     }
   }
