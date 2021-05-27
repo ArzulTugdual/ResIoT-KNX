@@ -1,6 +1,6 @@
 <template>
   <div class="api" id="app">
-    <div v-if="red">
+    <div v-if="!running">
       <img  alt="rouge" src="../assets/Button_Icon_Red.png" v-on:click="startStop()" >
       <p>allumer le chenillard</p>
     </div>
@@ -8,10 +8,24 @@
       <img alt="vert" src="../assets/Button_Icon_Green.png" v-on:click="startStop()" >
       <p>arrêter le chenillard</p>
     </div>
-    <div>
-      <img class="img" alt="accélérer" src="../assets/lievre.png" v-on:click="accelerer()" >
-      <img class="img" alt="ralentir" src="../assets/tortue.png" v-on:click="ralentir()" >
-    </div>
+    <table>
+      <tr>
+        <td>
+          <img id="up" class="img" alt="accélérer" src="../assets/lievre.png" v-on:click="accelerer()" >
+        </td>
+        <td>
+          <img id="down" class="img" alt="ralentir" src="../assets/tortue.png" v-on:click="ralentir()" >
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Accélérer</p>
+        </td>
+        <td>
+          <p>Ralentir</p>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 

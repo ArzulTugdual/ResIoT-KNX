@@ -4,13 +4,13 @@ export default {
   data () {
     return {
       info: null,
-      running: true
+      running: false
     }
   },
   methods: {
     startStop: function () {
       // éteindre
-      if (!this.running) {
+      if (this.running) {
         axios
           .get('http://192.168.1.107:8080/stop')
           .then(response => (this.info = response))

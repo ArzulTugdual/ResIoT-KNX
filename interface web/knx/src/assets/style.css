@@ -1,10 +1,20 @@
-.img {
+img {
   max-width: 10%;
   height: auto;
 }
 
 .img:hover {
-  color: #ff7a59;
   border: #000000 solid 1px;
   background:#fff;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 2s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.vitesse {
+  display: ruby;
 }
