@@ -1,3 +1,21 @@
 .img {
-  max-width: 5%;
+  width: 149px;
+  height: auto;
+}
+
+.img:hover {
+  border: #000000 solid 1px;
+  background:rgb(255, 255, 255);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 2s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+table {
+  width: 80%;
+  margin: auto;
 }

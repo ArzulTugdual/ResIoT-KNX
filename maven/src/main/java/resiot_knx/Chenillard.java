@@ -57,6 +57,9 @@ public class Chenillard {
 				while(running) {
 					/*lance le chenillard*/
 					try {
+						int lpre = (i%4)+1;
+						i++;
+						int lpost = (i%4)+1;
 						pc.write(new GroupAddress("0/0/"+i), false); //eteind la lampe i
 						i++;
 						if(i>4) i=1;
@@ -224,21 +227,21 @@ public class Chenillard {
 	
 	/**
 	 * accelere la vitesse du chenillard
-	 * @param pourcent: pourcentage d'acceleration par rapport a  la vitesse de depart
+	 * @param pourcent: pourcentage d'acceleration par rapport aï¿½ la vitesse de depart
 	 */
 	void accelere() {
 		if(v > 600) {	
 			this.v = v - 100;
 		}
 		else {
-			System.out.println("La vitesse est déja trop élevée.");
+			System.out.println("La vitesse est dï¿½ja trop ï¿½levï¿½e.");
 		}
 		
 	}
 	
 	/**
 	 * ralenti de pourcent pourcent de la vitesse
-	 * @param pourcent: pourcentage de ralentissement par rapport a  la vitesse de depart
+	 * @param pourcent: pourcentage de ralentissement par rapport aï¿½ la vitesse de depart
 	 */
 	void ralenti() {
 		this.v = v +100;

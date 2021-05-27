@@ -1,17 +1,49 @@
 <template>
   <div class="api" id="app">
-    <div v-if="red">
-      <img  alt="rouge" src="../assets/Button_Icon_Red.png" v-on:click="startStop()" >
-      <p>allumer le chenillard</p>
-    </div>
-    <div v-else>
-      <img alt="vert" src="../assets/Button_Icon_Green.png" v-on:click="startStop()" >
-      <p>arrêter le chenillard</p>
+    <div>
+      <img alt="vert" src="../assets/Button_Icon_Green.png" v-on:click="startStop(false)" >
+      <p>lancer le chenillard</p>
     </div>
     <div>
-      <img class="img" alt="accélérer" src="../assets/lievre.png" v-on:click="accelerer()" >
-      <img class="img" alt="ralentir" src="../assets/tortue.png" v-on:click="ralentir()" >
+      <img alt="rouge" src="../assets/Button_Icon_Red.png" v-on:click="startStop(true)" >
+      <p>arrêter le chenillard</p>
     </div>
+    <table>
+      <tr>
+        <td>
+          <img class="img" alt="random" src="../assets/random.png" v-on:click="aleatoire()" >
+        </td>
+        <td>
+          <img class="img" alt="appel de phare" src="../assets/sirene.png" v-on:click="phare()" >
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>lancer aléatoirement</p>
+        </td>
+        <td>
+          <p>appel de phare</p>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>
+          <img class="img" alt="accélérer" src="../assets/lievre.png" v-on:click="accelerer()" >
+        </td>
+        <td>
+          <img class="img" alt="ralentir" src="../assets/tortue.png" v-on:click="ralentir()" >
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Accélérer</p>
+        </td>
+        <td>
+          <p>Ralentir</p>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
