@@ -57,9 +57,6 @@ public class Chenillard {
 				while(running) {
 					/*lance le chenillard*/
 					try {
-						int lpre = (i%4)+1;
-						i++;
-						int lpost = (i%4)+1;
 						pc.write(new GroupAddress("0/0/"+i), false); //eteind la lampe i
 						i++;
 						if(i>4) i=1;
